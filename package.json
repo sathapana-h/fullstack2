@@ -4,8 +4,9 @@
   "description": "Repository fullstack",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "fomeat": " prettier --write *.js"
+    "start": "node src/index.js",
+    "fomeat": " prettier --write *.js",
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/sathapana-h/fullstack2#readme",
   "devDependencies": {
+    "nodemon": "^3.1.11",
     "prettier": "^3.8.0"
   },
   "dependencies": {
