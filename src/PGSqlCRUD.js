@@ -1,25 +1,21 @@
 // Description: Node Express REST API with Sequelize and SQLite CRUD Book
+// Date: 03/29/2020
 // npm install express sequelize sqlite3
-// Run this file with node SequelizeSQLiteCRUDBook.js
+// Run this file with node SequlizeSQLiteCRUDBook.js
 // Test with Postman
+require("dotenv").config();
 
 const express = require('express');
 const Sequelize = require('sequelize');
 const app = express();
-
 // parse incoming requests
 app.use(express.json());
 
-
 // set db url
-const dbUrl = 'postgres://webadmin:SXEsrm45036@node71539-node267wed.proen.app.ruk-com.cloud:11739/Books'
+const dbUrl = 'postgres://webadmin:ARSeca05966@node84880-fs-yiw.th.app.ruk-com.cloud:11772/Books'
 
 // create a connection to the database
-const sequelize = new Sequelize('database', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'sqlite',
-  storage: './Database/SQBooks.sqlite'
-});
+const sequelize = new Sequelize(dbUrl);
 
 // define the Book model
 const Book = sequelize.define('book', {
@@ -40,11 +36,6 @@ const Book = sequelize.define('book', {
 
 // create the books table if it doesn't exist
 sequelize.sync();
-
-app.get('/', (req, res) => {
-    res.send('Hello World! sathapana');
-});
-
 
 // route to get all books
 app.get('/books', (req, res) => {
@@ -113,4 +104,4 @@ app.delete('/books/:id', (req, res) => {
 
 // start the server
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}...`));
+ app.listen(port, () => console.log(`Listening on port http://localhost:${port}...`));
